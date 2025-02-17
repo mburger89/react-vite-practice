@@ -1,12 +1,36 @@
 import { useEffect, useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
+// import reactLogo from "./assets/react.svg";
+// import viteLogo from "/vite.svg";
 import "./App.css";
 
+const profileCard = {
+	display: "grid",
+	maxWidth: "400px",
+	gridTemplateColumns: "1fr 0.5fr 1fr",
+	listStyle: "none",
+	backgroundColor: "rgba(255, 255, 255, 0.1)",
+	borderRadius: "5px",
+	borderColor: "rgba(255, 255, 255, 1)",
+	borderSize: "3px",
+	padding: "10px",
+};
+
+const profileImg = {
+	borderRadius: "50px",
+	width: "100px",
+	height: "100px",
+	overflow: "hidden",
+	backgroundColor: "rgba(255, 255, 255, 0.1)",
+	objectFit: "fill",
+};
+
+const profileList = {
+	display: "grid",
+	gridTemplateColumns: "1f 1fr 1fr",
+};
+
 function App() {
-	// const [count, setCount] = useState(0);
 	const [users, setUsers] = useState([]);
-	let user_arr = [];
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -23,10 +47,18 @@ function App() {
 		};
 		fetchData();
 	}, []);
-	user_arr = users.map((u) => <li key={u.id}>{u.name}</li>);
+	const user_arr = users.map((u) => (
+		<li style={profileCard} key={u.id}>
+			<img style={profileImg} src={u.photo} />
+			<div>
+				<p>{`name: ${u.name}`}</p>
+				<p>{`user name: ${u.username}`}</p>
+			</div>
+		</li>
+	));
 	return (
 		<>
-			<ul>{user_arr}</ul>
+			<ul style={profileList}>{user_arr}</ul>
 		</>
 	);
 }
