@@ -6,7 +6,7 @@ import "./App.css";
 const profileCard = {
 	display: "grid",
 	maxWidth: "400px",
-	gridTemplateColumns: "1fr 0.5fr 1fr",
+	gridTemplateColumns: "1fr 1fr",
 	listStyle: "none",
 	backgroundColor: "rgba(255, 255, 255, 0.1)",
 	borderRadius: "5px",
@@ -26,7 +26,12 @@ const profileImg = {
 
 const profileList = {
 	display: "grid",
-	gridTemplateColumns: "1f 1fr 1fr",
+	gap: "10px",
+	gridTemplateColumns: "1fr 1fr 1fr",
+};
+
+const textBlock = {
+	textAlign: "left",
 };
 
 function App() {
@@ -50,7 +55,7 @@ function App() {
 	const user_arr = users.map((u) => (
 		<li style={profileCard} key={u.id}>
 			<img style={profileImg} src={u.photo} />
-			<div>
+			<div style={textBlock}>
 				<p>{`name: ${u.name}`}</p>
 				<p>{`user name: ${u.username}`}</p>
 			</div>
